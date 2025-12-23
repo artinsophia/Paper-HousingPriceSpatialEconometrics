@@ -9,7 +9,7 @@
     - /mnt/data/Housing
 
     - Housing foreclosure data
-    - Housing transaction data (important)
+    - Housing transaction data (important; ask from Ray)
     - Urban contruction
     - Land Sale (important)
     - high tech park (important)
