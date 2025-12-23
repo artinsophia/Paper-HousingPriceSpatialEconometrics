@@ -9,14 +9,14 @@
     - /mnt/data/Housing
 
     - Housing foreclosure data
-    - Housing transaction data
+    - Housing transaction data (important)
     - Urban contruction
-    - Land Sale
-    - high tech park
-
+    - Land Sale (important)
+    - high tech park (important)
 
 - target 1: Goals
     - High Tech Park vs Housing Price vs Environment 
 
+- Daily Update to Ray: 1) problems 
     
 
