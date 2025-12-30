@@ -2,13 +2,9 @@
 ### 12/30/2025
 - target 1: Housing (risk)
 - target 1: Data
-    - /mnt/data/raydata
-    - '/mnt/data/raydata/房产/二手房价数据/中国21万个小区-二手房挂牌数据（2007-2023.2）(1).csv'
-
-    - Housing foreclosure data
-    - Housing transaction data (important; ask from Ray)
-    - Land Sale (important)
-    - high tech park (important)
+    - Choose housing data (focus)
+    - Using current tech park data only (focus)
+    - Environment data (Pending)
 
 - target 1: Goals
     - High Tech Park vs Housing Price vs Environment 
