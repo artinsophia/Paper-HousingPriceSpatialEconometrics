@@ -1,4 +1,20 @@
 # quant_yubo
+### 12/30/2025
+- target 1: Housing (risk)
+- target 1: Data
+    - /mnt/data/raydata
+    - '/mnt/data/raydata/房产/二手房价数据/中国21万个小区-二手房挂牌数据（2007-2023.2）(1).csv'
+
+    - Housing foreclosure data
+    - Housing transaction data (important; ask from Ray)
+    - Urban contruction
+    - Land Sale (important)
+    - high tech park (important)
+
+- target 1: Goals
+    - High Tech Park vs Housing Price vs Environment 
+
+- `Daily Update to Ray: 1) problems` 
 
 ### 12/23/2025
 - target 2: AI bubble (risk)
