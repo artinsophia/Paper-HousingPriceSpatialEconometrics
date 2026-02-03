@@ -30,4 +30,6 @@
 
 - Daily Update to Ray: 1) problems 
     
-
+### 2/3/2026
+- Integrate industrial park and estate data
+- Location Embedding
