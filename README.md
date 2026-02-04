@@ -32,4 +32,8 @@
     
 ### 2/3/2026
 - Integrate industrial park and estate data
-- Location Embedding
+- Location Embedding (ANN and visualized by UMAP)
+
+### 2/4/2026
+- Numerical variables clean
+- Catagorical variables encoding
