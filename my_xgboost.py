@@ -2,6 +2,10 @@ import xgboost as xgb
 import pandas as pd
 import numpy as np
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+import matplotlib.pyplot as plt
+from sklearn.inspection import PartialDependenceDisplay
+import shap
+
 
 class XGBGPUTrainer:
     def __init__(self, params=None):
@@ -84,3 +88,22 @@ class XGBGPUTrainer:
         if self.model:
             self.model.save_model(path)
             print(f"模型已保存至: {path}")
+
+    def predict(self, X, inverse_func=None):
+            """
+            执行预测并支持尺度还原
+            :param X: 待预测的特征数据
+            :param inverse_func: 逆转函数，如 np.expm1 或 scaler.inverse_transform
+            :return: 预测结果向量
+            """
+            if self.model is None:
+                raise ValueError("模型尚未训练或加载！")
+
+            # 执行基础预测
+            preds = self.model.predict(X)
+
+            # 如果提供了逆转函数，则处理尺度转换
+            if inverse_func:
+                preds = inverse_func(preds)
+                
+            return preds
