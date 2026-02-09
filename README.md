@@ -37,3 +37,7 @@
 ### 2/4/2026
 - Numerical variables clean
 - Catagorical variables encoding
+
+### 2/9/2026
+- xgboost model builiding
+- shap importance and PDP
