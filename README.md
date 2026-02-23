@@ -41,3 +41,9 @@
 ### 2/9/2026
 - xgboost model builiding
 - shap importance and PDP
+
+### 2/14/2026
+- subgroup analysis
+
+### 2/23/2026
+- review the data
