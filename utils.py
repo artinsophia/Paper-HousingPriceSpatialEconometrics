@@ -5,6 +5,7 @@ import seaborn as sns
 import random
 import numpy as np
 import os
+import re
 
 def Display(df):
     print(f"Shape: {df.shape}")
@@ -31,10 +32,32 @@ def Display(df):
 
 def data_cleaning(park,housing):
     park_cleaned = park.dropna(subset=['经度','纬度'])
-    housing_cleaned = housing.dropna(subset=['lon','lat','单价'])
-    housing_cleaned = housing_cleaned.rename(columns={'lon':'x','lat':'y','单价':'price'})
+    housing_cleaned = housing.dropna(subset=['lon','lat','单价','价格'])
+    housing_cleaned = housing_cleaned.rename(columns={'lon':'x','lat':'y','单价':'unit_price','价格':'price'})
     park_cleaned = park_cleaned.rename(columns={'经度':'x','纬度':'y'})
     sub_housing = housing_cleaned.drop(columns=['环线','套内面积','抵押信息']).copy()
     sub_park = park_cleaned[['x', 'y','产业']].copy()
     return sub_park,sub_housing
 
+def process_num(text):
+
+    if pd.isna(text):
+        return None
+    nums = re.findall(r"\d+\.?\d*", text)
+    nums = [float(n) for n in nums]
+
+    if len(nums) >= 2:
+        avg = sum(nums[:2]) / 2
+        return avg
+    elif len(nums) == 1:
+        return nums[0]
+    else:
+        return None
+    
+def extract_year(text):
+    if pd.isna(text):
+        return None
+    match = re.search(r'(\d{4})', str(text))
+    if match:
+        return int(match.group(1))
+    return None
