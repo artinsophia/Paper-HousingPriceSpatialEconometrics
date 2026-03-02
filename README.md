@@ -39,11 +39,18 @@
 - Catagorical variables encoding
 
 ### 2/9/2026
-- xgboost model builiding
-- shap importance and PDP
+- Xgboost model builiding
+- Shap importance and PDP
 
 ### 2/14/2026
-- subgroup analysis
+- Subgroup analysis
 
 ### 2/23/2026
-- review the data
+- Review the data
+
+### 2/28/2026
+- Use the unit housing data
+
+### 3/2/2026
+- Data cleaning
+- Ann embedding

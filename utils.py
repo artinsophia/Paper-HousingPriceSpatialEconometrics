@@ -61,3 +61,11 @@ def extract_year(text):
     if match:
         return int(match.group(1))
     return None
+
+def extract_year(text):
+    if pd.isna(text):
+        return None
+    match = re.search(r'(\d{4})', str(text))
+    if match:
+        return int(match.group(1))
+    return None
