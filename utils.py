@@ -28,3 +28,13 @@ def Display(df):
             for val, count in top_5.items():
                 print(f"  - {val}: {count} 次")
         print("-" * 40)
+
+def data_cleaning(park,housing):
+    park_cleaned = park.dropna(subset=['经度','纬度'])
+    housing_cleaned = housing.dropna(subset=['lon','lat','单价'])
+    housing_cleaned = housing_cleaned.rename(columns={'lon':'x','lat':'y','单价':'price'})
+    park_cleaned = park_cleaned.rename(columns={'经度':'x','纬度':'y'})
+    sub_housing = housing_cleaned.drop(columns=['环线','套内面积','抵押信息']).copy()
+    sub_park = park_cleaned[['x', 'y','产业']].copy()
+    return sub_park,sub_housing
+

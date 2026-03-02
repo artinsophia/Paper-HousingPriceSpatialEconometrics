@@ -1,5 +1,8 @@
 __pycache__/
+processed_data/
 
 *.py[cod]
 *$py.class
+
+*.csv
 
