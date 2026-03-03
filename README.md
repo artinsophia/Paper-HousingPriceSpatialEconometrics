@@ -54,3 +54,6 @@
 ### 3/2/2026
 - Data cleaning
 - Ann embedding
+
+### 3/3/2026
+- Spatial encoding
