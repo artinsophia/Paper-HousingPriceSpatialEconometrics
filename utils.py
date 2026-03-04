@@ -35,7 +35,7 @@ def data_cleaning(park,housing):
     housing_cleaned = housing.dropna(subset=['lon','lat','单价','价格'])
     housing_cleaned = housing_cleaned.rename(columns={'lon':'x','lat':'y','单价':'unit_price','价格':'price'})
     park_cleaned = park_cleaned.rename(columns={'经度':'x','纬度':'y'})
-    sub_housing = housing_cleaned.drop(columns=['环线','套内面积','抵押信息','链家编号','看房时间']).copy()
+    sub_housing = housing_cleaned.drop(columns=['环线','套内面积','抵押信息','链家编号','小区名称']).copy()
     sub_park = park_cleaned[['x', 'y','产业']].copy()
     return sub_park,sub_housing
 
@@ -54,14 +54,6 @@ def process_num(text):
     else:
         return None
     
-def extract_year(text):
-    if pd.isna(text):
-        return None
-    match = re.search(r'(\d{4})', str(text))
-    if match:
-        return int(match.group(1))
-    return None
-
 def extract_year(text):
     if pd.isna(text):
         return None
@@ -102,3 +94,51 @@ def smooth_target_encoding(train, test, column, target, weight=10):
     test_encoded = test[column].map(encoded_values).fillna(global_mean) # 测试集若有新板块，填入全局均值
     
     return train_encoded, test_encoded
+
+def multi_label_explosion(df, col_name, split):
+
+    unique_types = (
+        df[col_name]
+        .dropna()
+        .str.split(split)
+        .explode()
+        .str.strip()  
+        .unique()
+    )
+
+    print(f"检测到的基础{col_name}类型共有 {len(unique_types)} 种：")
+    print(unique_types)
+    
+    for t in unique_types:
+        df[f'{col_name}_is_{t}'] = df[col_name].str.contains(t, na=False, regex=False).astype(int)
+
+    return df
+
+def cn_to_int_custom(cn_str):
+    """纯Python实现：将中文数字（含百、十、零、两）转为整数"""
+    if not cn_str:
+        return 0
+    
+    # 基础映射
+    digits = {'零': 0, '一': 1, '二': 2, '两': 2, '三': 3, '四': 4, 
+              '五': 5, '六': 6, '七': 7, '八': 8, '九': 9}
+    units = {'十': 10, '百': 100}
+    
+    total = 0
+    temp_val = 0  # 存储当前数字，待与单位相乘
+    
+    for char in cn_str:
+        if char in digits:
+            temp_val = digits[char]
+        elif char in units:
+            unit_val = units[char]
+            # 处理“十一”这种省略开头“一”的情况
+            if temp_val == 0 and char == '十':
+                temp_val = 1
+            total += temp_val * unit_val
+            temp_val = 0
+        elif char == '零':
+            continue
+            
+    total += temp_val # 加上末尾的个位数
+    return total
