@@ -5,4 +5,5 @@ processed_data/
 *$py.class
 
 *.csv
-
+*.html
+*.png
