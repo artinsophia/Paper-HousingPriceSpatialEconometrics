@@ -1,5 +1,6 @@
 __pycache__/
 processed_data/
+logs/
 
 *.py[cod]
 *$py.class
