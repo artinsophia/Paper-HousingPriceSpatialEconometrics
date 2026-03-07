@@ -20,7 +20,8 @@ class XGBGPUTrainer:
             'n_estimators': 1000,
             'learning_rate': 0.05,
             'max_depth': 6,
-            'verbosity': 1
+            'verbosity': 1,
+            'base_score': 0.5  # 显式设置避免 SHAP 兼容性问题
         }
         if params:
             self.default_params.update(params)

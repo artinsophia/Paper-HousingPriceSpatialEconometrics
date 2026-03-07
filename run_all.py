@@ -17,7 +17,6 @@ notebooks = [
     "02_spatial_encoding.ipynb",
     "03_feature_engineering.ipynb",
     "04_statistical_analysis.ipynb",
-    "05_EDA.ipynb"
 ]
 
 print(f"开始处理城市: {city}")
