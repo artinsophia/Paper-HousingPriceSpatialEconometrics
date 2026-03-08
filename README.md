@@ -33,3 +33,8 @@
 ### 3/6/2026
 - Pipelining the research workflow
 
+### 3/7/2026
+- Traverse the unit level data of 126 cities
+
+### 3/8/2026
+- DML
