@@ -35,7 +35,7 @@ def data_cleaning(park,housing):
     housing_cleaned = housing.dropna(subset=['lon','lat','单价','价格'])
     housing_cleaned = housing_cleaned.rename(columns={'lon':'x','lat':'y','单价':'unit_price','价格':'price'})
     park_cleaned = park_cleaned.rename(columns={'经度':'x','纬度':'y'})
-    sub_housing = housing_cleaned.drop(columns=['环线','套内面积','抵押信息','链家编号','小区名称','房本备件']).copy()
+    sub_housing = housing_cleaned.drop(columns=['环线','套内面积','抵押信息','链家编号','小区名称','房本备件','建筑面积']).copy()
     sub_park = park_cleaned[['x', 'y','产业']].copy()
     return sub_park,sub_housing
 

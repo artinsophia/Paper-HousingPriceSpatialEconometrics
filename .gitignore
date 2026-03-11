@@ -1,6 +1,8 @@
 __pycache__/
 processed_data/
 logs/
+tex/
+main/
 
 *.py[cod]
 *$py.class
@@ -8,3 +10,5 @@ logs/
 *.csv
 *.html
 *.png
+*.docx
+
