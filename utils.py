@@ -36,7 +36,7 @@ def data_cleaning(park,housing):
     housing_cleaned = housing_cleaned.rename(columns={'lon':'x','lat':'y','单价':'unit_price','价格':'price'})
     park_cleaned = park_cleaned.rename(columns={'经度':'x','纬度':'y'})
     sub_housing = housing_cleaned.drop(columns=['环线','套内面积','抵押信息','链家编号','小区名称','房本备件','建筑面积']).copy()
-    sub_park = park_cleaned[['x', 'y','产业']].copy()
+    sub_park = park_cleaned[['x', 'y','产业','级别','产业园名称','省份','城市','区县']].copy()
     return sub_park,sub_housing
 
 def process_num(text):
@@ -72,28 +72,6 @@ def haversine_np(lon1, lat1, lon2, lat2):
     c = 2 * np.arcsin(np.sqrt(a))
     km = 6371 * c  
     return km
-
-def smooth_target_encoding(train, test, column, target, weight=10):
-
-    # 1. 计算全域平均值 (Global Mean)
-    global_mean = train[target].mean()
-    
-    # 2. 计算每个板块的统计量：均值和计数
-    agg = train.groupby(column)[target].agg(['count', 'mean'])
-    counts = agg['count']
-    means = agg['mean']
-    
-    # 3. 计算平滑权重 alpha
-    smooth_weights = counts / (counts + weight)
-    
-    # 4. 计算编码值
-    encoded_values = smooth_weights * means + (1 - smooth_weights) * global_mean
-    
-    # 5. 映射回原表
-    train_encoded = train[column].map(encoded_values)
-    test_encoded = test[column].map(encoded_values).fillna(global_mean) # 测试集若有新板块，填入全局均值
-    
-    return train_encoded, test_encoded
 
 def multi_label_explosion(df, col_name, split):
 

@@ -42,3 +42,6 @@
 ### 3/11/2026
 - Industrial Park Catagory
 - optuna
+
+### 3/13/2026
+- Create block feature

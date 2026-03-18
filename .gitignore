@@ -11,4 +11,4 @@ main/
 *.html
 *.png
 *.docx
-
+*.env
